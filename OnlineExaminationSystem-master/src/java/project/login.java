@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Abhay Shah
+ * 
  */
 @WebServlet(name = "login", urlPatterns = {"/login"})
 public class login extends HttpServlet {
@@ -54,9 +54,9 @@ public class login extends HttpServlet {
             ResultSet rs = null;
             
             String driverName="com.mysql.jdbc.Driver";
-            String url = "jdbc:mysql://localhost:3306/ejproj";
+            String url = "jdbc:mysql://localhost:3306/dsaproj";
             String dbuser = "root";
-            String dbpass = "root";
+            String dbpass = "";
             String sql = "select * from login where username=? and password=?";
             
             String name = "";
