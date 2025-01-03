@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package project;
 
 import java.io.IOException;
@@ -24,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Abhay Shah
+ * 
  */
 @WebServlet(name = "evaluate", urlPatterns = {"/evaluate"})
 public class evaluate extends HttpServlet {
