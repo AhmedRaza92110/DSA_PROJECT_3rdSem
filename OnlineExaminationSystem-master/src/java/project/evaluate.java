@@ -20,7 +20,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * 
+ * @author Ahmed Raza
  */
 @WebServlet(name = "evaluate", urlPatterns = {"/evaluate"})
 public class evaluate extends HttpServlet {
@@ -37,9 +37,9 @@ public class evaluate extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             Connection conn = null;
-            String url = "jdbc:mysql://localhost:3306/ejproj";
+            String url = "jdbc:mysql://localhost:3306/dsaproj";
             String dbusername = "root";
-            String dbpassword = "root";
+            String dbpassword = "";
             Statement statement = null;
             ResultSet resultset = null;
          response.setContentType("text/html;charset=UTF-8");
