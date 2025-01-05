@@ -1,92 +1,145 @@
 <%-- 
-    Document   : adminhome
-    Created on : 17 Nov, 2020, 4:00:35 PM
-    Author     : Abhay Shah
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>TTGS | About Us</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>	
-        <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AASoftaims | About Us</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
     <style>
         body {
-    padding-top: 3.5rem;
-}
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
 
-nav {
-    font-family: sans-serif;
-}
+        nav {
+            background-color: #343a40;
+        }
 
-.navbar-brand {
-    font-size: 20px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff !important;
+        }
+
+        .jumbotron {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #fff;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .jumbotron .display-4 {
+            font-weight: bold;
+        }
+
+        select, input[type="submit"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        .container h2 {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .container p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 576px) {
+            .jumbotron {
+                padding: 2rem 1rem;
+            }
+
+            .container .row > div {
+                margin-bottom: 1rem;
+            }
+        }
     </style>
-
 </head>
 <body>
-    <form action="adminhome.jsp" method="POST"> 
+    <form action="adminhome.jsp" method="POST">
         <jsp:include page="adminnavbar.jsp" />
 
         <main role="main">
             <div class="jumbotron">
-              <div class="container">
-                <h1 class="display-4">Welcome Admin!</h1>
-                <p>Welcome to OES!, an online examination system for colleges and universities to conduct their exams.
-                </p>
-                <p>Please Select the Subject which you want to add questions to:
-                </p>
-                <p>
-                  <select name="examsubject">
-                      <option name="py" value="Python">Python</option>
-                      <option name="ej" value="Django">Django</option>          
-                  </select>        
-                </p>
-                <input type="submit" value="Select Exam"><br/><br/>
-                 <%
-                     String examtype = (String)request.getParameter("examsubject");
-                     session.setAttribute("examsubject", examtype);
-                 %>
-                 <p>Examination Subject to Edit: <b>${examsubject}</b></p>
-                 <p>Once you have selected an exam to edit click on "Set Examination" to either add questions to the examination or view the exam</p>
-                </div>
-                </div>
-  
                 <div class="container">
-                  <div class="row">
+                    <h1 class="display-4">Welcome Admin!</h1>
+                    <p>Welcome to OES! An online examination system for colleges and universities to conduct their exams.</p>
+                    <p>Please select the subject you want to add questions to:</p>
+                    <select name="examsubject">
+                        <option value="Python">Python</option>
+                        <option value="Django">Django</option>
+                    </select>
+                    <input type="submit" value="Select Exam">
+                    <%
+                        String examtype = request.getParameter("examsubject");
+                        session.setAttribute("examsubject", examtype);
+                    %>
+                    <p class="mt-3">Examination Subject to Edit: <b>${examsubject}</b></p>
+                    <p>Once you have selected an exam to edit, click on "Set Examination" to either add questions to the examination or view the exam.</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row text-center">
                     <div class="col-md-4">
-                      <h2>Admin</h2>
-                      <p>OES provides Admin accounts which gives the user the privilege to create, manipulate or delete the exam</p>
+                        <h2>Admin</h2>
+                        <p>OES provides admin accounts, granting users privileges to create, manipulate, or delete exams.</p>
                     </div>
                     <div class="col-md-4">
-                      <h2>How does it Work?</h2>
-                      <p>OES makes use of JSP, Servlets, JSTL and a MySql database</p>
+                        <h2>How does it Work?</h2>
+                        <p>OES uses JSP, Servlets, JSTL, and a MySQL database for seamless operation and management.</p>
                     </div>
                     <div class="col-md-4">
-                      <h2>Terms & Conditions</h2>
-                      <p>If your organization has any concerns regarding the system please read our Terms and Conditions.</p>
+                        <h2>Terms & Conditions</h2>
+                        <p>If your organization has any concerns about the system, please read our Terms and Conditions.</p>
                     </div>
                 </div>
                 <hr>
             </div>
         </main>
 
-<footer class="container">
-  <p>&copy; oes. All Rights Reserved</p>
-</footer>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="../assets/dist/js/bootstrap.bundle.js"></script>
-
+        <footer class="container">
+            <p>&copy; 2025 AASoftaims. All Rights Reserved</p>
+        </footer>
     </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 </html>
