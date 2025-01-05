@@ -1,7 +1,5 @@
 <%-- 
-    Document   : addquestionDB
-    Created on : 18 Nov, 2020, 1:44:32 AM
-    Author     : Abhay Shah
+    
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,8 +12,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <sql:setDataSource driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/ejproj" 
-        user="root" password="root"></sql:setDataSource>
+        <sql:setDataSource driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/dsaproj" 
+        user="root" password=""></sql:setDataSource>
         
         <sql:update var="tbl">
                     INSERT INTO ${examsubject}(qno,question,a1,a2,a3,a4,ans) VALUES (?,?,?,?,?,?,?)
