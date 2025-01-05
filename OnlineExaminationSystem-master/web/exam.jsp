@@ -1,7 +1,5 @@
 <%-- 
-    Document   : exam
-    Created on : 18 Nov, 2020, 4:21:33 AM
-    Author     : Abhay Shah
+   
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -35,64 +33,115 @@
           font-size: 3.5rem;
         }
       }
-    nav {
-        font-family: sans-serif;
-    }
 
-    .navbar-brand {
-        font-size: 20px;
-        font-family: Georgia, 'Times New Roman', Times, serif;
-    }
+      body {
+          background-color: #f8f9fa;
+          font-family: 'Poppins', sans-serif;
+      }
+
+      nav {
+          font-family: 'Poppins', sans-serif;
+      }
+
+      .navbar-brand {
+          font-size: 24px;
+          font-weight: bold;
+      }
+
+      h1 {
+          margin-bottom: 30px;
+          font-size: 2.5rem;
+      }
+
+      h3 {
+          color: #007bff;
+      }
+
+      form {
+          background-color: #fff;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      button {
+          background-color: #007bff;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          font-size: 18px;
+          border-radius: 5px;
+          transition: background-color 0.3s;
+      }
+
+      button:hover {
+          background-color: #0056b3;
+      }
+
+      #timer {
+          font-size: 18px;
+          color: #ffc107;
+      }
+
+      .navbar-nav .nav-item a {
+          font-size: 18px;
+      }
+
+      ol {
+          margin-bottom: 30px;
+      }
+
     </style>
 </head>
         
     <c:set var="selectedexam" value="${param.selectedexam}" scope="session" />
     <body>
          <header>
-            <!--Navigation Bar-->
-            <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                <a class="navbar-brand" href="#"><b>ONLINE EXAMINATION SYSTEM</b></a>
+            <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+                <a class="navbar-brand" href="#">ONLINE EXAMINATION SYSTEM</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 		<div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto">
 		    <li class="nav-item">
-			<a class="nav-link"><b><span id="timer" style="color:white;"></span></b></a>
+			<a class="nav-link"><b><span id="timer"></span></b></a>
 		    </li>
                     </ul>
                 </div>    
             </nav>
-        </header><br/>
-    <sql:setDataSource driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/ejproj" user="root" password="root"></sql:setDataSource>
+        </header><br/><br/>
+    <sql:setDataSource driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/dsaproj" user="root" password=""></sql:setDataSource>
         <sql:query var="mcq">
             select * from ${selectedexam};
         </sql:query>
            
-        <br/><br/><br/>    
-        <form action="evaluate" method="POST">
-            <center><h1>${selectedexam} Examination</h1></center> 
-            <c:set var="questioncnt" value="0" />
-            <c:forEach var="mcqexam" items="${mcq.rows}" >
-                    <c:set var="questioncnt" value="${questioncnt+1}" scope="page" />
-                    <ol id="${questioncnt}">
+        <br/><br/>    
+        <div class="container">
+            <form action="evaluate" method="POST">
+                <center><h1>${selectedexam} Examination</h1></center> 
+                <c:set var="questioncnt" value="0" />
+                <c:forEach var="mcqexam" items="${mcq.rows}" >
+                        <c:set var="questioncnt" value="${questioncnt+1}" scope="page" />
+                        <ol id="${questioncnt}">
 
-                        <h3><span>Q<c:out value="${questioncnt}"></c:out>.&nbsp;</span><c:out value="${mcqexam.question}"></c:out></h3>
-                        <input type="radio" name="${mcqexam.qno}" value="${mcqexam.a1}" required="">&nbsp;<c:out value="${mcqexam.a1}"></c:out><br>
-                        <input type="radio" name="${mcqexam.qno}"value="${mcqexam.a2}" required="">&nbsp;<c:out value="${mcqexam.a2}"></c:out><br>
-                        <input type="radio" name="${mcqexam.qno}" value="${mcqexam.a3}" required="">&nbsp;<c:out value="${mcqexam.a3}"></c:out><br>
-                        <input type="radio" name="${mcqexam.qno}" value="${mcqexam.a4}" required="">&nbsp;<c:out value="${mcqexam.a4}"></c:out>
+                            <h3><span>Q<c:out value="${questioncnt}"></c:out>.&nbsp;</span><c:out value="${mcqexam.question}"></c:out></h3>
+                            <input type="radio" name="${mcqexam.qno}" value="${mcqexam.a1}" required="">&nbsp;<c:out value="${mcqexam.a1}"></c:out><br>
+                            <input type="radio" name="${mcqexam.qno}"value="${mcqexam.a2}" required="">&nbsp;<c:out value="${mcqexam.a2}"></c:out><br>
+                            <input type="radio" name="${mcqexam.qno}" value="${mcqexam.a3}" required="">&nbsp;<c:out value="${mcqexam.a3}"></c:out><br>
+                            <input type="radio" name="${mcqexam.qno}" value="${mcqexam.a4}" required="">&nbsp;<c:out value="${mcqexam.a4}"></c:out>
 
-                        <br>
-                        </ol>
-                        <br>
+                            <br>
+                            </ol>
+                            <br>
 
-                </c:forEach>
-            <center> 
-            <button>Submit Exam</button>
-            </center>
-            <br><br>
-        </form>
+                    </c:forEach>
+                <center> 
+                <button>Submit Exam</button>
+                </center>
+                <br><br>
+            </form>
+        </div>
     </body>
     <script type="text/javascript">
         var count = 1000;
