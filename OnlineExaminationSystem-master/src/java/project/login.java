@@ -21,7 +21,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * 
+ * @author Ahmed Raza
  */
 @WebServlet(name = "login", urlPatterns = {"/login"})
 public class login extends HttpServlet {
@@ -59,7 +59,7 @@ public class login extends HttpServlet {
             String dbpass = "";
             String sql = "select * from login where username=? and password=?";
             
-            String name = "";
+            String name = "root";
             String emailid = "";
             
             try{
