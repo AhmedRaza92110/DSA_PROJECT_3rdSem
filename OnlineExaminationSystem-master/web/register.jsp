@@ -1,7 +1,5 @@
 <%-- 
-    Document   : register
-    Created on : 16 Nov, 2020, 5:08:47 PM
-    Author     : Abhay Shah
+    
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -11,82 +9,111 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" crossorigin="anonymous">
         
         <title>OES | Sign Up</title>
         <style>
+            body {
+                background: linear-gradient(135deg, #f9f9f9, #e3e3e3);
+                font-family: 'Poppins', sans-serif;
+            }
+
+            #logreg-forms {
+                width: 420px;
+                margin: 10vh auto;
+                background-color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
             
-           #logreg-forms{
-                width:412px;
-                margin:10vh auto;
-                background-color:#f3f3f3;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-                transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+            #logreg-forms:hover {
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
             }
+
             #logreg-forms form {
-                width: 100%;
-                max-width: 410px;
-                padding: 15px;
-                margin: auto;
+                padding: 30px;
             }
+
             #logreg-forms .form-control {
-                position: relative;
-                box-sizing: border-box;
-                height: auto;
+                margin-bottom: 20px;
+                border-radius: 5px;
+                border: 1px solid #ced4da;
+                box-shadow: none;
+                transition: border-color 0.2s;
+            }
+
+            #logreg-forms .form-control:focus {
+                border-color: #007bff;
+                box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+            }
+
+            #logreg-forms h1 {
+                font-size: 26px;
+                font-weight: 600;
+                color: #333;
+            }
+
+            #logreg-forms hr {
+                margin: 20px 0;
+                border-top: 1px solid #ddd;
+            }
+
+            #logreg-forms a {
+                text-decoration: none;
+                color: #007bff;
+                font-size: 14px;
+                transition: color 0.3s;
+            }
+
+            #logreg-forms a:hover {
+                color: #0056b3;
+            }
+
+            #logreg-forms .btn {
                 padding: 10px;
                 font-size: 16px;
-            }
-            #logreg-forms .form-control:focus { z-index: 2; }
-            #logreg-forms .form-signin input[type="text"] {
-                margin-bottom: -1px;
-                border-bottom-right-radius: 0;
-                border-bottom-left-radius: 0;
-
-            }
-            #logreg-forms .form-signin input[type="password"] {
-                border-top-left-radius: 0;
-                border-top-right-radius: 0;
+                border-radius: 5px;
+                background: #007bff;
+                border: none;
+                transition: background-color 0.3s;
             }
 
-            #logreg-forms a{
-                display: block;
-                padding-top:10px;
-                color:grey;
+            #logreg-forms .btn:hover {
+                background: #0056b3;
             }
 
+            h5 {
+                font-size: 14px;
+                margin-top: 15px;
+            }
 
-            #logreg-forms input[type="submit"]{ margin-top:10px;  background-color: #4a4747}
-
-            #logreg-forms .form-reset, #logreg-forms .form-signup{ display: none; }
-
-            #logreg-forms .form-signup input { margin-bottom: 2px;}
-
-            /* Mobile */
-
-            @media screen and (max-width:500px){
-                #logreg-forms{
-                    width:300px;
+            /* Mobile Optimization */
+            @media screen and (max-width: 500px) {
+                #logreg-forms {
+                    width: 340px;
+                    margin: 5vh auto;
                 }
-
             }
-    </style>
+        </style>
     </head>
     <body>
-        <div id="logreg-forms" >
-        <form class="form-signin" action="register">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Student Sign Up</h1>
-            <hr>
-            <input type="text" id="inputEmail" class="form-control" placeholder="Name" required="" autofocus="" name="name" />
-            <input type="email" id="inputEmail" class="form-control" placeholder="Email" required="" autofocus="" name="email" />
-            <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="pass" /><br>
-            
-            <input class="btn btn-success btn-block" type="submit" value="Register" style="color:white;"><br/>
-            <a href="login.jsp" id="forgot_pswd">Already have an account? Sign In</a><br/>
-            <h5 style="color:red; text-align: center;">${ermsg}</h5>
-            <hr>
-        </form>  
-    </div>
+        <div id="logreg-forms">
+            <form class="form-signin" action="register">
+                <h1 class="h3 mb-3 text-center">Student Sign Up</h1>
+                <hr>
+                <input type="text" class="form-control" placeholder="Name" required="" autofocus="" name="name" />
+                <input type="email" class="form-control" placeholder="Email" required="" name="email" />
+                <input type="password" class="form-control" placeholder="Password" required="" name="pass" />
+                
+                <input class="btn btn-primary btn-block" type="submit" value="Register">
+                
+                <a href="login.jsp" class="d-block text-center mt-3">Already have an account? Sign In</a>
+                <h5 class="text-danger text-center">${ermsg}</h5>
+                <hr>
+            </form>  
+        </div>
     </body>
 </html>
 
