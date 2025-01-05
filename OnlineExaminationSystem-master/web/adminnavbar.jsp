@@ -1,7 +1,4 @@
 <%-- 
-    Document   : adminnavbar
-    Created on : 17 Nov, 2020, 6:13:12 PM
-    Author     : Abhay Shah
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
