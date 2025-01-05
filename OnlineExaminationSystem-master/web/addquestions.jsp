@@ -1,113 +1,117 @@
 <%-- 
-    Document   : addquestions
-    Created on : 18 Nov, 2020, 12:22:39 AM
-    Author     : Abhay Shah
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
 <!DOCTYPE html>
-<html>
-    <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>TTGS | About Us</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>	
-        <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/carousel/">
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AASoftaims | Add Questions</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
     <style>
         body {
-    padding-top: 3.5rem;
-}
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
 
-nav {
-    font-family: sans-serif;
-}
+        .main-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            color: #4a4a4a;
+            border-radius: 8px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        }
 
-.navbar-brand {
-    font-size: 20px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
- #logreg-forms{
-    width:412px;
-    margin:10vh auto;
-    background-color:#f3f3f3;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-#logreg-forms form {
-    width: 100%;
-    max-width: 410px;
-    padding: 15px;
-    margin: auto;
-}
-#logreg-forms .form-control {
-    position: relative;
-    box-sizing: border-box;
-    height: auto;
-    padding: 10px;
-    font-size: 16px;
-}
-#logreg-forms .form-control:focus { z-index: 2; }
-#logreg-forms .form-signin input[type="text"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    
-}
-#logreg-forms .form-signin input[type="password"] {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
+        .main-container h1 {
+            font-size: 28px;
+            text-align: center;
+            font-weight: bold;
+            color: #4a4a4a;
+        }
 
-#logreg-forms a{
-    display: block;
-    padding-top:10px;
-    color:grey;
-}
+        .main-container h5 {
+            text-align: center;
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
 
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+        }
 
-#logreg-forms input[type="submit"]{ margin-top:10px;  background-color: #4a4747}
+        .form-control:focus {
+            border-color: #6a11cb;
+            box-shadow: 0 0 5px rgba(106, 17, 203, 0.3);
+        }
 
-#logreg-forms .form-reset, #logreg-forms .form-signup{ display: none; }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
 
-#logreg-forms .form-signup input { margin-bottom: 2px;}
+        .btn-success {
+            background-color: #6a11cb;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
 
-/* Mobile */
+        .btn-success:hover {
+            background-color: #4a4a4a;
+        }
 
-@media screen and (max-width:500px){
-    #logreg-forms{
-        width:300px;
-    }
-    
-}
+        .success-message {
+            color: #28a745;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        @media screen and (max-width: 576px) {
+            .main-container {
+                padding: 15px;
+            }
+
+            .main-container h1 {
+                font-size: 24px;
+            }
+        }
     </style>
-    </head>
-    <body>
-            <jsp:include page="adminnavbar.jsp" /><br/>
-            <h1 style="text-align: center;"><u>Add Questions</u></h1>
-            <h5 style="text-align: center;">Add Questions to ${examsubject} Examination</h5><br/>
-                        
-            <form class="form-signin" action="addquestionDB.jsp" method="POST">
-               
-                <input type="text" class="form-control" placeholder="Question Number" required="" autofocus="" name="questno" />
-                <input type="text" class="form-control" placeholder="Question" required="" name="question" />
-                <input type="text" class="form-control" placeholder="Choice 1" required="" name="ans1" />
-                <input type="text" class="form-control" placeholder="Choice 2" required="" name="ans2" />
-                <input type="text" class="form-control" placeholder="Choice 3" required="" name="ans3" />
-                <input type="text" class="form-control" placeholder="Choice 4" required="" name="ans4" />
-                <input type="text" class="form-control" placeholder="Correct Choice" required="" name="answer" /><br>
-                
-                <input class="btn btn-success btn-block" type="submit" value="Add Question" style="color:white;"><br/>
-                
-                <c:if test="${not empty param.success}">
+</head>
+<body>
+    <jsp:include page="adminnavbar.jsp" />
+    <div class="main-container">
+        <h1>Add Questions</h1>
+        <h5>Add Questions to <strong>${examsubject}</strong> Examination</h5>
+        <form action="addquestionDB.jsp" method="POST">
+            <input type="text" class="form-control" placeholder="Question Number" required="" autofocus="" name="questno">
+            <input type="text" class="form-control" placeholder="Question" required="" name="question">
+            <input type="text" class="form-control" placeholder="Choice 1" required="" name="ans1">
+            <input type="text" class="form-control" placeholder="Choice 2" required="" name="ans2">
+            <input type="text" class="form-control" placeholder="Choice 3" required="" name="ans3">
+            <input type="text" class="form-control" placeholder="Choice 4" required="" name="ans4">
+            <input type="text" class="form-control" placeholder="Correct Choice" required="" name="answer">
+            <button type="submit" class="btn btn-success btn-block">Add Question</button>
+            <c:if test="${not empty param.success}">
+                <div class="success-message">
                     <c:out value="${param.success}"></c:out>
-                </c:if>
-            </form>
-    </body>
+                </div>
+            </c:if>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
 </html>
+
