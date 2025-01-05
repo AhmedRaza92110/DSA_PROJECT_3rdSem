@@ -1,7 +1,6 @@
 <%-- 
     Document   : setmarks
-    Created on : 18 Nov, 2020, 4:52:44 AM
-    Author     : Abhay Shah
+    Author     : Ahmed Raza
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,9 +14,9 @@
     </head>
     <body>
         <sql:setDataSource driver="com.mysql.jdbc.Driver"
-                           url="jdbc:mysql://localhost:3306/ejproj"
+                           url="jdbc:mysql://localhost:3306/dsaproj"
                            user="root"
-                           password="root"></sql:setDataSource>
+                           password=""></sql:setDataSource>
         <sql:query var="userscore">
             select marks from login where email='${email}'  
         </sql:query>
@@ -35,3 +34,4 @@
       
     </body>
 </html>
+
