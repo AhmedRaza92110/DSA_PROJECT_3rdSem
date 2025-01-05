@@ -1,90 +1,188 @@
 <%-- 
-    Document   : adminlogin
-    Created on : 17 Nov, 2020, 3:33:24 PM
-    Author     : Abhay Shah
+   
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        
-        <title>OES | Login</title>
-        <style>
-           #logreg-forms{
-    width:412px;
-    margin:10vh auto;
-    background-color:#f3f3f3;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-#logreg-forms form {
-    width: 100%;
-    max-width: 410px;
-    padding: 15px;
-    margin: auto;
-}
-#logreg-forms .form-control {
-    position: relative;
-    box-sizing: border-box;
-    height: auto;
-    padding: 10px;
-    font-size: 16px;
-}
-#logreg-forms .form-control:focus { z-index: 2; }
-#logreg-forms .form-signin input[type="text"] {
-    margin-bottom: -1px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    
-}
-#logreg-forms .form-signin input[type="password"] {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <title>OES | Login</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+        }
 
-#logreg-forms a{
-    display: block;
-    padding-top:10px;
-    color:grey;
-}
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
 
+        #logreg-forms {
+            background: #fff;
+            border-radius: 10px;
+            padding: 25px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
 
-#logreg-forms input[type="submit"]{ margin-top:10px;  background-color: #4a4747}
+        #logreg-forms h1 {
+            color: #4a4a4a;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
 
-#logreg-forms .form-reset, #logreg-forms .form-signup{ display: none; }
+        #logreg-forms input[type="email"], 
+        #logreg-forms input[type="password"] {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
 
-#logreg-forms .form-signup input { margin-bottom: 2px;}
+        #logreg-forms input[type="email"]:focus, 
+        #logreg-forms input[type="password"]:focus {
+            border-color: #2575fc;
+            box-shadow: 0 0 8px rgba(37, 117, 252, 0.3);
+        }
 
-/* Mobile */
+        #logreg-forms .btn {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
 
-@media screen and (max-width:500px){
-    #logreg-forms{
-        width:300px;
-    }
-    
-}
+        #logreg-forms .btn:hover {
+            background: linear-gradient(135deg, #2575fc 0%, #6a11cb 100%);
+        }
 
-        </style>
-    </head>
-    <body>
+        #logreg-forms hr {
+            border-top: 1px solid #ddd;
+        }
+
+        #logreg-forms h5 {
+            margin-top: 15px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        #logreg-forms h5.text-danger {
+            color: #d9534f;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .welcome-section h1 {
+            font-size: 36px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .welcome-section p {
+            font-size: 18px;
+            color: #eaeaea;
+            margin-top: 10px;
+        }
+
+        .highlights {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .highlight-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            width: 250px;
+        }
+
+        .highlight-card i {
+            font-size: 30px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        footer {
+            background: #4a4a4a;
+            color: #fff;
+            padding: 15px 20px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1>Welcome to OES</h1>
+            <p>Your trusted platform for efficient online examination management</p>
+        </div>
+
+        <!-- Login Form -->
         <div id="logreg-forms">
-        <form class="form-signin" action="adminlogin" method="POST">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Administrator Sign In</h1>
-            <hr/>
-            <input type="email" class="form-control" placeholder="Email" required="" autofocus="" name="email" />
-            <input type="password" class="form-control" placeholder="Password" required="" name="pass" /><br>
-            
-            <input class="btn btn-success btn-block" type="submit" value="Login" style="color:white;"><br/>
-            <h5 style="color:red; text-align: center;">${err}</h5>
-            <hr/>
-        </form>
-        
+            <form class="form-signin" action="adminlogin" method="POST">
+                <h1 class="h3 mb-3 font-weight-normal text-center">Administrator Login</h1>
+                <hr>
+                <input type="email" class="form-control" placeholder="Email" required autofocus name="email">
+                <input type="password" class="form-control" placeholder="Password" required name="pass">
+                <button class="btn btn-block mt-3" type="submit">Login</button>
+                <h5 class="text-danger">${err}</h5>
+                <hr>
+            </form>
+        </div>
+
+        <!-- Highlights Section -->
+        <div class="highlights">
+            <div class="highlight-card">
+                <i class="fas fa-laptop-code"></i>
+                <h5>Efficient Management</h5>
+                <p>Manage exams seamlessly with intuitive tools.</p>
+            </div>
+            <div class="highlight-card">
+                <i class="fas fa-user-shield"></i>
+                <h5>Secure Platform</h5>
+                <p>Ensure data security and confidentiality.</p>
+            </div>
+            <div class="highlight-card">
+                <i class="fas fa-clock"></i>
+                <h5>Save Time</h5>
+                <p>Automate and streamline examination processes.</p>
+            </div>
+        </div>
     </div>
-    </body>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 OES. All Rights Reserved | Designed by AASoftaims</p>
+    </footer>
+</body>
 </html>
+
