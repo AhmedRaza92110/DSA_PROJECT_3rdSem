@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package project;
 
 import java.io.IOException;
@@ -50,9 +54,9 @@ public class adminlogin extends HttpServlet {
             ResultSet rs = null;
             
             String driverName="com.mysql.jdbc.Driver";
-            String url = "jdbc:mysql://localhost:3306/ejproj";
+            String url = "jdbc:mysql://localhost:3306/dsaproj";
             String dbuser = "root";
-            String dbpass = "root";
+            String dbpass = "";
             String sql = "select * from adminlog where email=? and password=?";
             
             String id = "";
@@ -136,3 +140,4 @@ public class adminlogin extends HttpServlet {
     }// </editor-fold>
 
 }
+
